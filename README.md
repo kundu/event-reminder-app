@@ -63,6 +63,7 @@ Comprehensive feature tests were written to ensure the functionality of the appl
 
 These tests utilize Laravel's built-in testing capabilities, ensuring that the application behaves as expected.
 
+![Test Case Screenshot](https://i.ibb.co.com/sggd3Pm/Screenshot-from-2024-10-21-00-03-07.png)
 
 ### 7. Cron Job Setup
 
