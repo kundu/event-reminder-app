@@ -362,8 +362,11 @@ To run the tests and ensure everything is functioning correctly, use the followi
 ```bash
 php artisan test
 ```
-
 This will execute all the tests defined in your application.
+
+**Note: Without proper SMTP configuration, the project will not run correctly. For local development, the OTP will be set to 123456.**
+
+
 
 ## Conclusion
 
