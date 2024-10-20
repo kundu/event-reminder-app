@@ -63,6 +63,43 @@ Comprehensive feature tests were written to ensure the functionality of the appl
 
 These tests utilize Laravel's built-in testing capabilities, ensuring that the application behaves as expected.
 
+
+### 7. Cron Job Setup
+
+To ensure that scheduled tasks run automatically, we need to set up a cron job on the server. This cron job will run the Laravel scheduler every minute, allowing it to execute any scheduled tasks defined in the application.
+
+1. Open the crontab file for editing:
+   ```
+   crontab -e
+   ```
+
+2. Add the following line to run the Laravel scheduler every minute:
+   ```
+   * * * * * cd /path/to/your/project && php artisan schedule:run >> /dev/null 2>&1
+   ```
+   Replace `/path/to/your/project` with the actual path to your Laravel project.
+
+3. Save and exit the crontab file.
+
+This setup ensures that the Laravel scheduler runs regularly, executing any scheduled tasks such as sending event reminders.
+
+### 8. Queue Configuration
+
+For testing purposes, we are currently using the `sync` queue driver. This means that queued jobs are executed synchronously in the foreground. While this is suitable for testing, it's important to note that in a production environment, you would typically use a more robust queue driver like Redis or database for better performance and reliability.
+
+To configure the `sync` queue driver for testing:
+
+1. In your `.env` file, ensure the following line is present:
+   ```
+   QUEUE_CONNECTION=sync
+   ```
+
+2. This configuration allows you to test queued jobs immediately without setting up a separate queue worker.
+
+When moving to production, you should consider switching to a more scalable queue driver and running queue workers to process jobs in the background.
+
+
+
 ## Challenges Faced
 
 During the development process, I encountered challenges related to:
@@ -223,8 +260,8 @@ To set up SMTP email for testing, we will use Mailtrap, a service that allows yo
 Clone the repository to your local machine:
 
 ```bash
-git clone <repository-url>
-cd <repository-directory>
+git clone https://github.com/kundu/event-reminder-app.git
+cd event-reminder-app
 ```
 
 ## Step 2: Install Dependencies

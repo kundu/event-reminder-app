@@ -32,6 +32,7 @@ class AuthController extends Controller
             return view('auth.register');
         } catch (Exception $e) {
             Log::error('Error sending reminder email: ' . $e->getMessage(), ["Exception" => $e]);
+            return back()->with('error', 'Something went wrong please try again later. Error :' . $e->getMessage());
         }
     }
 
@@ -58,6 +59,7 @@ class AuthController extends Controller
             return redirect()->route('verify.otp')->with('email', $user->email);
         } catch (Exception $e) {
             Log::error('Error sending reminder email: ' . $e->getMessage(), ["Exception" => $e]);
+            return back()->with('error', 'Something went wrong please try again later. Error :' . $e->getMessage());
         }
     }
 
@@ -72,6 +74,7 @@ class AuthController extends Controller
             return view('auth.login');
         } catch (Exception $e) {
             Log::error('Error sending reminder email: ' . $e->getMessage(), ["Exception" => $e]);
+            return back()->with('error', 'Something went wrong please try again later. Error :' . $e->getMessage());
         }
     }
 
@@ -100,6 +103,7 @@ class AuthController extends Controller
             return back()->withErrors(['email' => 'Invalid credentials']);
         } catch (Exception $e) {
             Log::error('Error sending reminder email: ' . $e->getMessage(), ["Exception" => $e]);
+            return back()->with('error', 'Something went wrong please try again later. Error :' . $e->getMessage());
         }
     }
 
@@ -114,6 +118,7 @@ class AuthController extends Controller
             return view('auth.verify-otp');
         } catch (Exception $e) {
             Log::error('Error sending reminder email: ' . $e->getMessage(), ["Exception" => $e]);
+            return back()->with('error', 'Something went wrong please try again later. Error :' . $e->getMessage());
         }
     }
 
@@ -142,6 +147,7 @@ class AuthController extends Controller
             return back()->withErrors(['otp' => 'Invalid OTP']);
         } catch (Exception $e) {
             Log::error('Error sending reminder email: ' . $e->getMessage(), ["Exception" => $e]);
+            return back()->with('error', 'Something went wrong please try again later. Error :' . $e->getMessage());
         }
     }
 
@@ -157,6 +163,7 @@ class AuthController extends Controller
             return redirect()->route('login');
         } catch (Exception $e) {
             Log::error('Error sending reminder email: ' . $e->getMessage(), ["Exception" => $e]);
+            return back()->with('error', 'Something went wrong please try again later. Error :' . $e->getMessage());
         }
     }
 }

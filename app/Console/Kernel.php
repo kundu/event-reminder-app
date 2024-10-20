@@ -14,11 +14,6 @@ class Kernel extends ConsoleKernel
     {
         // Send reminders for upcoming events every minute
         $schedule->command('events:send-reminders')->everyMinute();
-
-        // Prune Telescope entries daily
-        $schedule->command('telescope:prune')->daily();
-
-
     }
 
     /**
